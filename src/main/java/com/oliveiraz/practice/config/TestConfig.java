@@ -14,6 +14,7 @@ import com.oliveiraz.practice.repositories.UserRepository;
 @Profile("test")
 public class TestConfig implements CommandLineRunner {
 
+	//injeção de dependência//
 	@Autowired
 	private UserRepository userRepository;
 
