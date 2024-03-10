@@ -11,6 +11,7 @@ import org.springframework.context.annotation.Profile;
 import com.oliveiraz.practice.entities.Category;
 import com.oliveiraz.practice.entities.Order;
 import com.oliveiraz.practice.entities.OrderItem;
+import com.oliveiraz.practice.entities.Payment;
 import com.oliveiraz.practice.entities.Product;
 import com.oliveiraz.practice.entities.User;
 import com.oliveiraz.practice.entities.enums.OrderStatus;
@@ -86,7 +87,10 @@ public class TestConfig implements CommandLineRunner {
 		
 		orderItemRepository.saveAll(Arrays.asList(oi1, oi2, oi3, oi4));
 		
+		Payment pay1 = new Payment(null, Instant.parse("2024-02-21T05:42:10Z"), o2);
+		o2.setPaymnet(pay1);	
 		
+		orderRepository.save(o2);
 	}
 
 }
