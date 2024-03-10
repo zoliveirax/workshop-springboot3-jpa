@@ -73,8 +73,8 @@ public class TestConfig implements CommandLineRunner {
 		User u1 = new User(null, "Alex Silva", "alex@gmail.com", "983348888", "123456");
 		User u2 = new User(null, "Julio Oliveira", "julio@gmail.com", "977132777", "123456"); 
 		
-		Order o1 = new Order(null, Instant.parse("2024-03-20T19:53:07Z"),OrderStatus.DELIVERED, u1);
-		Order o2 = new Order(null, Instant.parse("2024-02-21T03:42:10Z"),OrderStatus.PAID, u2);
+		Order o1 = new Order(null, Instant.parse("2024-03-20T19:53:07Z"),OrderStatus.PAID, u1);
+		Order o2 = new Order(null, Instant.parse("2024-02-21T03:42:10Z"),OrderStatus.DELIVERED, u2);
 		Order o3 = new Order(null, Instant.parse("2024-01-22T15:21:22Z"),OrderStatus.SHIPPED, u1);
 
 		userRepository.saveAll(Arrays.asList(u1, u2));
@@ -87,10 +87,10 @@ public class TestConfig implements CommandLineRunner {
 		
 		orderItemRepository.saveAll(Arrays.asList(oi1, oi2, oi3, oi4));
 		
-		Payment pay1 = new Payment(null, Instant.parse("2024-02-21T05:42:10Z"), o2);
-		o2.setPaymnet(pay1);	
+		Payment pay1 = new Payment(null, Instant.parse("2024-02-21T05:42:10Z"), o1);
+		o1.setPaymnet(pay1);	
 		
-		orderRepository.save(o2);
+		orderRepository.save(o1);
 	}
 
 }
