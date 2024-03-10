@@ -3,8 +3,7 @@ package com.oliveiraz.practice.entities;
 import java.io.Serializable;
 import java.util.Objects;
 
-import com.fasterxml.jackson.annotation.JsonProperty;
-import com.fasterxml.jackson.annotation.JsonProperty.Access;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.oliveiraz.practice.entities.pk.OrderItemPK;
 
 import jakarta.persistence.EmbeddedId;
@@ -33,7 +32,7 @@ public class OrderItem implements Serializable {
 		this.price = price;
 	}
 	
-	@JsonProperty(access = Access.WRITE_ONLY)
+	@JsonIgnore
 	public Order getOrder() {
 		return id.getOrder();
 	}
