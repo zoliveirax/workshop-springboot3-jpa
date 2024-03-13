@@ -8,6 +8,7 @@ import org.springframework.stereotype.Service;
 
 import com.oliveiraz.practice.entities.User;
 import com.oliveiraz.practice.repositories.UserRepository;
+import com.oliveiraz.practice.services.exceptions.ResourceNotFoundException;
 
 //identifica esta classe como um serviço//
 @Service
@@ -22,8 +23,7 @@ public class UserService {
 	
 	public User findById(Long id) {
 		Optional<User> obj = repository.findById(id);
-		return obj.get();
-		
+		return obj.orElseThrow(() -> new ResourceNotFoundException(id));
 	}
 	
 	public User insert (User obj) {
