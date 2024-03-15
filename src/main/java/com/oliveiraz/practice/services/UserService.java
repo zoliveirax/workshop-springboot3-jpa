@@ -13,6 +13,8 @@ import com.oliveiraz.practice.repositories.UserRepository;
 import com.oliveiraz.practice.services.exceptions.DatabaseException;
 import com.oliveiraz.practice.services.exceptions.ResourceNotFoundException;
 
+import jakarta.persistence.EntityNotFoundException;
+
 //identifica esta classe como um serviço//
 @Service
 public class UserService {
@@ -44,9 +46,13 @@ public class UserService {
 	}
 	
 	public User update(Long id, User obj) {
+		try {
 		User entity = repository.getReferenceById(id);
 		updateData(entity, obj);
 		return repository.save(entity);
+		} catch (EntityNotFoundException e) {
+			throw new ResourceNotFoundException(id);
+		}
 	}
 
 	private void updateData(User entity, User obj) {
