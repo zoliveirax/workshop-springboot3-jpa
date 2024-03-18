@@ -1,4 +1,4 @@
-# Web Services Java + Spring Boot e Jpa/Hibernate 
+# Web Services Rest Java + Spring Boot e Jpa/Hibernate 
 
 ## Neste projeto apliquei boas práticas de programação utilizando a linguagem Java juntamente com os frameworks Spring Boot, JPA e Hibernate.
 
